@@ -10,14 +10,16 @@
     <ImageView
         android:id="@+id/img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="300dp"
+        android:layout_marginBottom="40dp"/>
 
     <EditText
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name Image"
-        android:textSize="26dp"/>
+        android:textSize="26dp"
+        android:padding="20dp"/>
     <Button
         android:id="@+id/button_full"
         android:layout_width="match_parent"
