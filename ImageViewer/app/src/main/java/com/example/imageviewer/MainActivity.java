@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
     }
     public TextView createTextView(final ImageData img)
     {
-        final Intent txtIntent = new Intent(context, FullscreenActivity.class);
+        final Intent txtIntent = new Intent(context, detailsActivity.class);
 
         final TextView tv = new TextView(context);
         tv.setText(img.getUri().toString());
