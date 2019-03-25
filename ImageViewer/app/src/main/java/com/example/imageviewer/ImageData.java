@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class ImageData implements Serializable
 {
     private String name, stringUri;
+    public static final String TAG = "image";
 
     public ImageData()
     {

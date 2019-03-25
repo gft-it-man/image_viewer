@@ -2,13 +2,17 @@ package com.example.imageviewer;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.Serializable;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -33,7 +37,7 @@ public class FullscreenActivity extends AppCompatActivity {
      */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
-    private TextView mContentView;
+    private ImageView mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -95,8 +99,12 @@ public class FullscreenActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
         Intent startIntent = getIntent();
-        String test = startIntent.getStringExtra("uri");
-        mContentView.setText(test);
+        ImageData test = (ImageData) startIntent.getSerializableExtra(ImageData.TAG);
+        //ImageData image = new ImageData();
+//        image.setUri(test);
+        mContentView.setImageURI(test.getUri());
+
+
 
 
         // Set up the user interaction to manually show or hide the system UI.

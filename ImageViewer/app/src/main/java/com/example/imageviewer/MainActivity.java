@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity
                 images.add(img);
 
 
-                scrollLayout.addView(createTextView(images.indexOf(img), img.getUri().toString()));
+                scrollLayout.addView(createTextView(img));
                 //((ImageView)findViewById(R.id.image)).setImageURI(photoUri);
             }
         }
@@ -77,16 +77,15 @@ public class MainActivity extends AppCompatActivity
     {
         final Intent txtIntent = new Intent(context, FullscreenActivity.class);
 
-        final TextView tv = new TextView(getApplicationContext());
+        final TextView tv = new TextView(context);
         tv.setText(txt);
         tv.setId(id);
         //tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv.getTag(id);
-                txtIntent.putExtra("uri", txt);
-                txtIntent.putExtra("value", id);
+                txtIntent.putExtra(ImageData.TAG, txt);
+                //txtIntent.putExtra("value", id);
                 startActivity(txtIntent);
 
 
@@ -94,4 +93,27 @@ public class MainActivity extends AppCompatActivity
         });
         return tv;
     }
+    public TextView createTextView(final ImageData img)
+    {
+        final Intent txtIntent = new Intent(context, FullscreenActivity.class);
+
+        final TextView tv = new TextView(context);
+        tv.setText(img.getUri().toString());
+        tv.setId(id);
+        //tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtIntent.putExtra(ImageData.TAG, img);
+                //txtIntent.putExtra("value", id);
+                startActivity(txtIntent);
+
+
+            }
+        });
+        return tv;
+    }
+
+
 }
+
